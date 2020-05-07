@@ -16,6 +16,6 @@ jobs:
     - run: flutter test
     - run: flutter build apk --debug --split-per-abi
     - uses: actions/upload-artifact@v2
-        with:
-            name: APK file
-            path: build/app/outputs/apk/debug/*.apk
+      with:
+          name: APK file
+          path: build/app/outputs/apk/debug/*.apk
