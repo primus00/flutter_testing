@@ -18,5 +18,5 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
           name: APK file
-          path: build/app/outputs/apk/debug/app-release.apk
-    - run: curl --http1.1 https://${{ secrets.APPITIZE_TOKEN }}@api.appetize.io/v1/apps/${{ secrets.APPITIZE_KEY }} -F "file=build/app/outputs/apk/debug/app-release.apk" -F "platform=android"
+          path: build/app/outputs/apk/release/app-release.apk
+    - run: curl --http1.1 https://${{ secrets.APPITIZE_TOKEN }}@api.appetize.io/v1/apps/${{ secrets.APPITIZE_KEY }} -F "file=@build/app/outputs/apk/release/app-release.apk" -F "platform=android"
