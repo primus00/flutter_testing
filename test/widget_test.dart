@@ -1,19 +1,15 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:protect/main.dart';
+import 'package:protect/features/home/presentation/screens/home.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    await tester.pumpWidget(DemoApp());
+  testWidgets("Testing Home widget for given title and message", (WidgetTester tester) async{
+    await tester.pumpWidget(Home(title: "T", message:"M"));
 
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    final titleFinder = find.text("T");
+    final messageFinder = find.text("M");
 
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(titleFinder, findsOneWidget);
+    expect(messageFinder, findsOneWidget);
   });
 }

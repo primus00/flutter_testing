@@ -1,14 +1,35 @@
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatelessWidget {
+class Home extends StatelessWidget {
+  final String title;
+  final String message;
+
+  const Home({
+    Key key,
+    @required this.title,
+    @required this.message,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text(
-          'hi there'
-        )
-      )
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              Text(message),
+              Text("Hello world from widget ")
+            ],
+          )
+        ),
+      ),
     );
   }
 }
