@@ -1,9 +1,31 @@
 on: push
 name: Test, Build and Release apk
 jobs:
+  # build:
+  #   name: Build APK
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v1
+  #   - uses: actions/setup-java@v1
+  #     with:
+  #       java-version: '12.x'
+  #   - uses: subosito/flutter-action@v1
+  #     with:
+  #       flutter-version: '1.17.0'
+  #   - run: flutter pub get
+  #   - run: flutter test
+  #   - run: flutter build apk --split-per-abi --debug
+  #   - run: flutter build apk --split-per-abi
+  #   - run: flutter build appbundle
+  #   # - uses: actions/upload-artifact@v2
+  #   #   with:
+  #   #       name: APKs Debug
+  #   #       path: build/app/outputs
+  #   - run: curl --http1.1 https://${{ secrets.APPITIZE_TOKEN }}@api.appetize.io/v1/apps/${{ secrets.APPITIZE_KEY }} -F "file=@build/app/outputs/apk/debug/app-x86_64-debug.apk" -F "platform=android"
+
   build:
-    name: Build APK
-    runs-on: ubuntu-latest
+    name: Build IOS
+    runs-on:  macos-latest
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-java@v1
@@ -14,11 +36,9 @@ jobs:
         flutter-version: '1.17.0'
     - run: flutter pub get
     - run: flutter test
-    - run: flutter build apk --split-per-abi --debug
-    - run: flutter build apk --split-per-abi
-    - run: flutter build appbundle
-    - uses: actions/upload-artifact@v2
-      with:
-          name: APKs Debug
-          path: build/app/outputs
-    - run: curl --http1.1 https://${{ secrets.APPITIZE_TOKEN }}@api.appetize.io/v1/apps/${{ secrets.APPITIZE_KEY }} -F "file=@build/app/outputs/apk/debug/app-x86_64-debug.apk" -F "platform=android"
+    - run: flutter build --release --no-codesign
+    # - uses: actions/upload-artifact@v2
+    #   with:
+    #       name: APKs Debug
+    #       path: build/app/outputs
+    # - run: curl --http1.1 https://${{ secrets.APPITIZE_TOKEN }}@api.appetize.io/v1/apps/${{ secrets.APPITIZE_KEY }} -F "file=@build/app/outputs/apk/debug/app-x86_64-debug.apk" -F "platform=android"
