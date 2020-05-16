@@ -41,4 +41,4 @@ jobs:
       with:
           name: IOS App
           path: /Users/runner/runners/2.169.1/work/flutter_testing/flutter_testing/build/ios/iphoneos/Runner.app
-    - run: curl --http1.1 https://${{ secrets.APPITIZE_TOKEN }}@api.appetize.io/v1/apps/${{ secrets.APPITIZE_KEY }} -F "file=@/Users/runner/runners/2.169.1/work/flutter_testing/flutter_testing/build/ios/iphoneos/Runner.app" -F "platform=ios"
+    - run: curl --http1.1 https://${{ secrets.APPITIZE_TOKEN }}@api.appetize.io/v1/apps -F "file=@/Users/runner/runners/2.169.1/work/flutter_testing/flutter_testing/build/ios/iphoneos/Runner.app" -F "platform=ios"
